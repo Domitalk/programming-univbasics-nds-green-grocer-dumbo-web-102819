@@ -85,6 +85,17 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
+  temp_cart = cart
+  temp_cart = consolidate_cart(temp_cart)
+  temp_cart = apply_coupons(temp_cart, coupons)
+  temp_cart = apply_clearance(temp_cart)
+  index = 0
+  subtotal = 0
+  while index < temp_cart.size do
+    subtotal += temp_cart[index][:price]
+    index += 1
+  end
+  subtotal
   # Consult README for inputs and outputs
   #
   # This method should call
