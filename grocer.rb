@@ -48,7 +48,7 @@ def apply_coupons(cart, coupons)
   while index_cart < cart.size do
     index_coupons = 0
     while index_coupons < coupons.size do
-      if cart[index_cart][:item] == coupons[index_coupons][:item] && cart[index_cart][:count] > coupons[index_coupons][:num]
+      if (cart[index_cart][:item] == coupons[index_coupons][:item]) && (cart[index_cart][:count] >= coupons[index_coupons][:num])
         coupon_count = cart[index_cart][:count] / coupons[index_coupons][:num]
         remainder = cart[index_cart][:count] % coupons[index_coupons][:num]
         item_name = coupons[index_coupons][:item]
