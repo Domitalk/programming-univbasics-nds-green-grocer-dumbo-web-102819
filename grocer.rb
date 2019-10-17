@@ -71,6 +71,15 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
+  index = 0
+  new_array = Array.new
+  while index < cart.size do
+    if cart[index][:clearance]
+      cart[index][:price] = (cart[index][:price] * 0.80).round(2)
+    end
+    index += 1
+  end
+  cart
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
