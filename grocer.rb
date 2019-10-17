@@ -85,14 +85,14 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  temp_cart = cart
-  temp_cart = consolidate_cart(temp_cart)
-  temp_cart = apply_coupons(temp_cart, coupons)
-  temp_cart = apply_clearance(temp_cart)
+  cart = consolidate_cart(cart)
+  cart = apply_coupons(cart, coupons)
+  cart = apply_clearance(cart)
   index = 0
   subtotal = 0
-  while index < temp_cart.size do
-    subtotal += temp_cart[index][:price]
+  while index < cart.size do
+    item_total_price = cart[index][:price] * cart[index][:count]
+    subtotal += item_total_price
     index += 1
   end
   if subtotal > 100
