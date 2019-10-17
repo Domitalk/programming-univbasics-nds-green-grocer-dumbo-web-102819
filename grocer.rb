@@ -95,6 +95,9 @@ def checkout(cart, coupons)
     subtotal += temp_cart[index][:price]
     index += 1
   end
+  if subtotal > 100
+    subtotal = (subtotal * 0.90).round(2)
+  end
   subtotal
   # Consult README for inputs and outputs
   #
